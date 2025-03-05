@@ -1,29 +1,12 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 const Cursor = () => {
-  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [cursorSize, setCursorSize] = useState(12);
-  const [isHovering, setIsHovering] = useState(false);
-
-  useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      setCursorPos({ x: e.clientX, y: e.clientY });
-    };
-
-    document.addEventListener("mousemove", moveCursor);
-    return () => document.removeEventListener("mousemove", moveCursor);
-  }, []);
-
+  
   return (
     <motion.div
       className="fixed top-0 left-0 rounded-full pointer-events-none mix-blend-difference"
       style={{
-        transform: `translate(${cursorPos.x - cursorSize / 2}px, ${cursorPos.y - cursorSize / 2}px)`,
-        width: isHovering ? 50 : cursorSize,
-        height: isHovering ? 30 : cursorSize,
         background: "#fff",
-        borderRadius: isHovering ? "10px" : "50%",
         transition: "all 0.2s ease-in-out",
       }}
     />
@@ -33,8 +16,6 @@ const Cursor = () => {
 
 
 const Services = () => {
-  const [hovering, setHovering] = useState(false);
-
   const cardVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -65,8 +46,6 @@ const Services = () => {
               variants={cardVariants}
               whileHover="hover"
               className="p-6 bg-gray-800 rounded-lg text-center shadow-lg cursor-pointer relative transition-all duration-300"
-              onMouseEnter={() => setHovering(true)}
-              onMouseLeave={() => setHovering(false)}
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 opacity-0 hover:opacity-20 transition-all duration-300 rounded-lg"
