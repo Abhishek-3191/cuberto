@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 const Contact = () => {
   return (
+    <div id="contact">
     <motion.div
       className="h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black text-white"
       initial={{ opacity: 0 }}
@@ -45,6 +46,7 @@ const Contact = () => {
         </motion.div>
       </motion.div>
     </motion.div>
+    </div>
   );
 };
 
